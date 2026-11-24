@@ -42,7 +42,7 @@ nav a:hover,nav a:focus-visible{opacity:1;text-decoration:underline}
 .fig>svg{position:absolute;inset:0;width:100%;height:100%}
 .fig text{font:500 14px Inter,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--zone);stroke-width:4px}
 .fig .sub{font-size:13px;fill:var(--mute);font-weight:400}
-  .fig rect{fill:var(--card);stroke:var(--cob2)}.fig rect:nth-of-type(3){fill:var(--cob);stroke:none}.fig path{stroke:var(--cob2)}.fig marker path,.fig circle{fill:var(--cob2);stroke:none}
+  .fig{--sv-card:#fff;--sv-ink:#0b0d12;--sv-mute:#4a5163;--sv-zone:#eef2ff;--sv-cob2:#1240e0}@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .fig{--sv-card:#0f1426;--sv-ink:#e9ecf6;--sv-mute:#a3abc2;--sv-zone:#131a33;--sv-cob2:#7d9bff}}:root[data-theme=dark] .fig{--sv-card:#0f1426;--sv-ink:#e9ecf6;--sv-mute:#a3abc2;--sv-zone:#131a33;--sv-cob2:#7d9bff}.fig rect{fill:var(--sv-card);stroke:var(--sv-cob2)}.fig rect:nth-of-type(3){fill:#1240e0;stroke:none}.fig path{stroke:var(--sv-cob2)}.fig marker path,.fig circle{fill:var(--sv-cob2);stroke:none}.fig text{fill:var(--sv-ink);stroke:var(--sv-zone)}.fig .sub{fill:var(--sv-mute)}
 .figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start}
 .fg{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px}
 .fg .n{font:700 clamp(34px,4vw,46px)/1 "Space Grotesk";color:var(--cob2);white-space:nowrap}
@@ -297,13 +297,13 @@ cp.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(do
 
 const s=document.getElementById('svg');
 const nodes={
- sch:['Scheduled Script','batch re-checks from saved searches'],
- ue:['User Event','afterSubmit on vendor save'],
- lib:['Shared compliance library','rules, normalising, logging'],
- api:['FMCSA carrier API','USDOT / MC lookup, JSON'],
- ins:['Insurance & paperwork rules','coverage, expiry, agreements'],
- ven:['Vendor record','status, reasons, fleet size, date'],
- rep:['Saved-search reports','who is out of compliance']
+  sch:['Scheduled Script','batch re-checks'],
+   ue:['User Event','on vendor save'],
+   lib:['Compliance library','shared rules, logging'],
+   api:['FMCSA carrier API','USDOT / MC lookup'],
+   ins:['Insurance rules','coverage, expiry, docs'],
+   ven:['Vendor record','status, reasons, date'],
+   rep:['Compliance reports','saved searches']
 };
 const draw=()=>{
  const W=s.clientWidth,H=s.clientHeight;if(!W||!H)return;
