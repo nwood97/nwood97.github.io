@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nicholas Wood Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0a0d18);--ink:light-dark(#0b0d12,#e9ecf6);--mute:light-dark(#4a5163,#a3abc2);--cob:#1240e0;--cob2:light-dark(#1240e0,#7d9bff);--zone:light-dark(#eef2ff,#131a33);--rule:light-dark(#d5dbef,#26304f);--card:light-dark(#ffffff,#0f1426)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.05;margin:0;text-wrap:balance}
+h2{font-size:clamp(28px,3.6vw,40px)}
+h3{font-size:20px;line-height:1.2}
+p{margin:0 0 12px;max-width:68ch}
+a{color:var(--cob2)}
+.band{padding-block:clamp(36px,5vw,72px);padding-inline:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+nav{position:sticky;top:0;z-index:5;background:var(--cob);color:#fff}
+nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;padding:10px max(5vw,16px)}
+nav b{font-family:"Space Grotesk";font-weight:600;margin-right:auto;font-size:17px}
+nav a{color:#fff;text-decoration:none;font-size:15px;padding:8px 2px;opacity:.9}
+nav a:hover,nav a:focus-visible{opacity:1;text-decoration:underline}
+.strip{background:var(--cob);color:#fff;padding-block:clamp(28px,4vw,52px) clamp(28px,3vw,40px)}
+.strip h1{font-size:clamp(44px,6.4vw,76px)}
+.strip .role{font:500 clamp(18px,2vw,22px)/1.3 "Space Grotesk";margin:14px 0 10px}
+.strip p{color:#dfe6ff;font-size:17px}
+.strip .meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:18px;font-size:15px}
+.strip .meta a{color:#fff}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:6px;font-weight:600;text-decoration:none;border:2px solid currentColor}
+.btn.solid{background:#fff;color:var(--cob);border-color:#fff}
+.btn.ghost{color:#fff}
+.hero{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:20px;margin-top:-1px}
+.panel{background:var(--zone);border:1px solid var(--rule);border-radius:8px;padding:20px}
+.panel .cap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--mute);margin-bottom:12px}
+.panel .cap b{color:var(--ink);font-family:"Space Grotesk";font-size:17px}
+.fig{position:relative;min-height:400px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.fig text{font:500 14px Inter,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--zone);stroke-width:4px}
+.fig .sub{font-size:13px;fill:var(--mute);font-weight:400}
+.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start}
+.fg{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:16px}
+.fg .n{font:700 clamp(34px,4vw,46px)/1 "Space Grotesk";color:var(--cob2);white-space:nowrap}
+.fg .l{font-weight:600;margin-top:6px;line-height:1.3}
+.fg .d{font-size:14px;color:var(--mute);line-height:1.4;margin-top:2px}
+.fg.wide{grid-column:1/-1}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:13px;padding:3px 9px;border-radius:4px;background:var(--zone);border:1px solid var(--rule);white-space:nowrap}
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(24px,4vw,56px);align-items:start}
+.about .lead{font-size:19px;line-height:1.5}
+.feat{background:var(--zone);border-block:1px solid var(--rule)}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:24px}
+.cols h3{font-size:17px;margin-bottom:8px;color:var(--cob2)}
+ul{margin:0;padding-left:20px}
+li{margin-bottom:6px}
+.qs{margin-top:28px;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:20px}
+.qs h3{margin-bottom:10px}
+.qs ol{columns:2;column-gap:32px;margin:0;padding-left:22px}
+.qs li{break-inside:avoid}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:16px;margin-top:24px}
+.case{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.case .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.case .pn{font:500 13px "Space Grotesk";color:var(--mute);white-space:nowrap}
+.case p{font-size:15px;margin:0;color:var(--mute)}
+.case p b{color:var(--ink);font-weight:600}
+.case .chips{margin-top:auto;padding-top:6px}
+.st{font-size:13px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap;border:1px solid}
+.st.prod{color:var(--cob2);border-color:var(--cob2)}
+.st.test{color:var(--ink);border-color:var(--rule);background:var(--zone)}
+.st.dev{color:var(--mute);border-color:var(--rule);border-style:dashed}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;font-size:14px;color:var(--mute);align-items:center}
+.code{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:clamp(20px,3vw,40px);align-items:start}
+.codebox{background:#0b1024;color:#dbe3ff;border-radius:8px;border:1px solid #26304f;overflow:hidden}
+.codebox .bar{display:flex;justify-content:space-between;align-items:center;padding:6px 8px 6px 16px;background:#131a33;font-size:13px;color:#a3abc2;gap:8px}
+.codebox button{min-height:36px;padding:0 14px;border-radius:5px;border:1px solid #3a4670;background:#1a2346;color:#fff;font:600 14px Inter;cursor:pointer}
+.codebox button:focus-visible{outline:2px solid #7d9bff;outline-offset:2px}
+pre{margin:0;padding:16px;overflow-x:auto;font:13.5px/1.55 "JetBrains Mono",ui-monospace,monospace}
+.k{color:#8fb0ff}.c{color:#7f8aa8}.s{color:#ffc38a}
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:16px;margin-top:24px}
+.skills .panel h3{font-size:17px;margin-bottom:10px}
+.tl{margin-top:24px;display:grid;gap:0}
+.job{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;padding:20px 0;border-top:1px solid var(--rule)}
+.job .when{font:600 15px "Space Grotesk";color:var(--cob2)}
+.job h3{margin-bottom:4px}
+.job .org{color:var(--mute);margin-bottom:8px}
+.contact{background:var(--cob);color:#fff}
+.contact h2{font-size:clamp(32px,4.5vw,52px)}
+.contact p{color:#dfe6ff;font-size:17px;margin-top:12px}
+.contact .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+footer{background:var(--cob);color:#c9d4ff;font-size:14px;padding:0 max(5vw,16px) 28px}
+footer .wrap{border-top:1px solid #3a63ec;padding-top:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.sec-head p{color:var(--mute);margin:0}
+@media(max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.figs{grid-template-columns:repeat(4,minmax(0,1fr))}.fg.wide{grid-column:auto}.about,.code{grid-template-columns:minmax(0,1fr)}.cols{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:700px){.figs{grid-template-columns:repeat(2,minmax(0,1fr))}.qs ol{columns:1}}
+@media(max-width:600px){.job{grid-template-columns:minmax(0,1fr);gap:4px}nav a{font-size:14px}.fig{min-height:560px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tok{display:none}}
+.resume{display:inline-flex;align-items:center;gap:14px;min-height:64px;padding:10px 16px 10px 12px;border-radius:10px;background:#fff;color:var(--cob);text-decoration:none;border:2px solid #fff;box-shadow:0 1px 0 rgba(0,0,0,.08);transition:transform .15s ease,box-shadow .15s ease}
+.resume .doc{width:30px;height:38px;flex:none}
+.resume .rt{display:flex;flex-direction:column;line-height:1.2}
+.resume .rt b{font:600 17px "Space Grotesk",Inter,sans-serif;color:#0b0d12}
+.resume .rt span{font-size:13px;color:#4a5163}
+.resume .dl{width:22px;height:22px;flex:none;margin-left:8px;padding:2px;border-radius:50%;box-sizing:content-box;background:var(--cob);color:#fff;transition:transform .15s ease}
+.resume:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,30,.25)}
+.resume:hover .dl{transform:translateY(2px)}
+.resume:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.alt{font-size:14px;color:#dfe6ff;margin-top:8px}
+.alt a{color:#fff}
+@media(prefers-reduced-motion:reduce){.resume,.resume .dl{transition:none}}
+</style>
+</head>
+<body>
+<nav aria-label="Sections"><div class="wrap"><b>Nicholas Wood</b><a href="#work">Featured</a><a href="#projects">Projects</a><a href="#code">Code</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a href="https://drive.google.com/uc?export=download&amp;id=1VklDDTNUodPJlX-tRsZrwWXOcL7I9rg7">Resume</a></div></nav>
+
+<header class="strip band"><div class="wrap">
+  <h1>Nicholas Wood</h1>
+  <div class="role">Business Systems Developer · NetSuite, SuiteScript &amp; ERP automation</div>
+  <p>I build the automations, integrations and data fixes that keep a multi-subsidiary NetSuite account running, from the Microsoft Access migration that brought the company onto NetSuite to a live federal carrier-compliance integration.</p>
+  <div class="meta"><span>St. Charles, Missouri (St. Louis area)</span><span>B.S. Computer Science, Lindenwood University</span><span>Open to remote or on-site roles</span><span>nicholaswood@hotmail.com</span></div>
+  <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center"><a class="resume" href="https://drive.google.com/uc?export=download&amp;id=1VklDDTNUodPJlX-tRsZrwWXOcL7I9rg7" aria-label="Download Nicholas Wood resume, PDF"><svg class="doc" viewBox="0 0 32 40" aria-hidden="true"><path d="M3 1h18l8 8v28a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2z" fill="#fff" stroke="currentColor" stroke-width="2"/><path d="M21 1v8h8" fill="none" stroke="currentColor" stroke-width="2"/><rect x="5" y="25" width="17" height="9" rx="1.5" fill="currentColor"/><text x="13.5" y="32.2" text-anchor="middle" font-size="7" font-weight="700" fill="#fff" font-family="Inter,sans-serif">PDF</text><path d="M6 13h12M6 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="rt"><b>Download resume</b><span>PDF · one page</span></span><svg class="dl" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn ghost" href="mailto:nicholaswood@hotmail.com">Email me</a><a class="btn ghost" href="https://www.linkedin.com/in/nicholas-wood-966852156">LinkedIn</a><a class="btn ghost" href="#projects">See the work</a></div>
+</div></header>
+
+<section class="band" aria-label="Flagship system and figures"><div class="wrap hero">
+  <div class="panel">
+    <div class="cap"><b>Carrier Compliance Platform</b><span>How the flagship system fits together</span></div>
+    <div class="fig" id="fig" role="img" aria-label="Diagram: a scheduled script and a vendor-save user event both call one shared compliance library, which queries the FMCSA carrier API, applies insurance and document rules, writes results to vendor records, and feeds saved-search compliance reports."><svg id="svg"></svg></div>
+  </div>
+  <div class="figs">
+    <div class="fg"><div class="n">40+</div><div class="l">ERP initiatives</div><div class="d">Scripts, enhancements and data projects</div></div>
+    <div class="fg"><div class="n">5</div><div class="l">SuiteScript types</div><div class="d">Client, User Event, Scheduled, Map/Reduce, Suitelet</div></div>
+    <div class="fg"><div class="n">5</div><div class="l">Subsidiaries</div><div class="d">Payment account automation confirmed in each</div></div>
+    <div class="fg"><div class="n">1</div><div class="l">ERP migration</div><div class="d">Microsoft Access to Oracle NetSuite</div></div>
+    <div class="fg wide"><div class="l" style="margin:0 0 8px">Daily toolkit</div><div class="chips"><span class="chip">SuiteScript 2.1</span><span class="chip">JavaScript ES6+</span><span class="chip">REST APIs</span><span class="chip">Saved searches</span><span class="chip">SuiteAnalytics</span><span class="chip">FreeMarker PDF</span><span class="chip">SuiteFlow</span></div></div>
+  </div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap about">
+  <div><h2>Developer who learned the business first</h2></div>
+  <div>
+    <p class="lead">I joined Diversified Ingredients in March 2025 as one of two people moving the company's operations off a legacy Microsoft Access database and onto Oracle NetSuite, and we hit the implementation deadline.</p>
+    <p>Since then I've been the developer behind much of the account's custom behaviour: external API integrations, scheduled and Map/Reduce batch jobs, client-side validation, accounting automation across five subsidiaries, contract PDF templates and the saved searches people use to run purchasing and logistics.</p>
+    <p>I work close to the people who use the system. I check native NetSuite features before writing code, test in Sandbox and in small Production batches, and write scripts that the next developer can read. Most of what I build exists to remove a manual step or stop a bad record from being saved.</p>
+  </div>
+</div></section>
+
+<section class="band feat" id="work"><div class="wrap">
+  <div class="sec-head"><h2>Featured: automated carrier compliance</h2><p>SuiteScript 2.1 · REST API · Scheduled + User Event · shared library</p></div>
+  <p style="margin-top:16px;font-size:17px">Trucking vendors have to hold valid federal operating authority <i>and</i> meet the company's own insurance and paperwork rules. Checking each carrier by hand against the FMCSA SAFER data was slow and easy to let lapse, so I built a compliance engine inside NetSuite that checks carriers automatically, on a schedule and the moment a vendor is saved.</p>
+  <div class="cols">
+    <div><h3>What I built</h3><ul>
+      <li>An integration with an FMCSA/SAFER data provider that picks the right endpoint from the carrier's USDOT or MC number and parses the JSON response.</li>
+      <li>One shared compliance library holding the API calls, normalisation, business rules, record updates and logging.</li>
+      <li>A Scheduled Script that re-checks eligible carriers from configurable saved searches, with run limits for controlled tests.</li>
+      <li>A User Event (afterSubmit) that checks a trucking vendor on create or edit, gated by form and vendor category.</li>
+    </ul></div>
+    <div><h3>Rules it enforces</h3><ul>
+      <li>Federal operating authority and status from FMCSA.</li>
+      <li>Auto, cargo and general liability coverage, with currency values normalised before comparison.</li>
+      <li>Insurance expiry against a configurable warning window.</li>
+      <li>Signed carrier agreement and insurance certificate on file, plus internal authorisation flags.</li>
+      <li>Fleet size (power units) pulled to the vendor, with zero kept distinct from missing.</li>
+    </ul></div>
+    <div><h3>Engineering details</h3><ul>
+      <li>Never overwrites good stored data when the external service fails or returns blanks.</li>
+      <li>Every failed rule becomes a plain-English reason on the vendor record.</li>
+      <li>Duplicate vendors across searches are de-duplicated with a Set and responses are cached per run.</li>
+      <li>Obviously invalid carrier numbers are rejected before any request is made.</li>
+      <li>A diagnostic mode proved eligibility logic in Production before updates were switched on.</li>
+    </ul></div>
+  </div>
+  <div class="qs"><h3>Result</h3><p style="margin:0">Tested against live Production vendor records; the vendor-save check is confirmed working. Compliance status, the reasons behind it and the last check date now sit on the vendor record itself, ready for saved-search reporting, and any rule change is made once in the shared library.</p></div>
+  <div class="qs"><h3>Questions I enjoy answering about it</h3><ol>
+    <li>Why the compliance engine is a library and not part of either script</li>
+    <li>How it behaves when the federal data service is down</li>
+    <li>How it records that a check happened even when no API call was possible</li>
+    <li>How it stays inside SuiteScript governance limits in batch runs</li>
+    <li>How scheduled and event-driven checks share one code path</li>
+    <li>How I rolled new event-driven logic into Production safely</li>
+  </ol></div>
+</div></section>
+
+<section class="band" id="projects"><div class="wrap">
+  <div class="sec-head"><h2>Case studies</h2><p>Grouped from 40+ individual scripts and searches</p></div>
+  <div class="legend"><span class="st prod">In production</span> confirmed working for users <span class="st test">Tested</span> verified in Sandbox or controlled runs <span class="st dev">Built</span> developed, final rollout pending</div>
+  <div class="grid" id="cases"></div>
+</div></section>
+
+<section class="band feat" id="code"><div class="wrap code">
+  <div>
+    <h2>Sample code</h2>
+    <p style="margin-top:16px">A pattern I use often: one Client Script deployed to several custom record types, driven by a per-record field map, so the rule lives in one file. Here, choosing <b>Bulk</b> packaging clears and locks the packaging quantity; a matching User Event clears it again on save in case the browser script didn't run.</p>
+    <p>Field and list IDs are changed from the real account.</p>
+    <div class="chips" style="margin-top:12px"><span class="chip">pageInit</span><span class="chip">fieldChanged</span><span class="chip">N/currentRecord</span><span class="chip">config-driven</span></div>
+  </div>
+  <div class="codebox"><div class="bar"><span>bulk-packaging-client.js</span><button type="button" id="copy">Copy</button></div>
+<pre id="src"><span class="c">/**
+ * @NApiVersion 2.1
+ * @NScriptType ClientScript
+ */</span>
+<span class="k">define</span>([], () =&gt; {
+  <span class="k">const</span> BULK_ID = <span class="s">'3'</span>;
+  <span class="c">// One map per record type: one script, many deployments</span>
+  <span class="k">const</span> CONFIG = {
+    customrecord_sales_contract:    { packaging: <span class="s">'custrecord_sc_pack_type'</span>, qty: <span class="s">'custrecord_sc_pack_qty'</span> },
+    customrecord_purchase_contract: { packaging: <span class="s">'custrecord_pc_pack_type'</span>, qty: <span class="s">'custrecord_pc_pack_qty'</span> },
+    customrecord_phase:             { packaging: <span class="s">'custrecord_ph_pack_type'</span>, qty: <span class="s">'custrecord_ph_pack_qty'</span> }
+  };
+
+  <span class="k">const</span> getConfig = (rec) =&gt; CONFIG[rec.type] || <span class="k">null</span>;
+
+  <span class="k">function</span> updatePackagingQty(rec) {
+    <span class="k">const</span> cfg = getConfig(rec);
+    <span class="k">if</span> (!cfg) <span class="k">return</span>;
+    <span class="k">const</span> isBulk = String(rec.getValue({ fieldId: cfg.packaging }) || <span class="s">''</span>) === BULK_ID;
+    <span class="k">const</span> field = rec.getField({ fieldId: cfg.qty });
+
+    <span class="k">if</span> (isBulk) {
+      <span class="k">if</span> (field) field.isDisabled = <span class="k">false</span>;   <span class="c">// unlock so the value can be cleared</span>
+      rec.setValue({ fieldId: cfg.qty, value: <span class="k">null</span>, ignoreFieldChange: <span class="k">true</span> });
+    }
+    <span class="k">if</span> (field) field.isDisabled = isBulk;
+  }
+
+  <span class="k">function</span> pageInit(ctx) { updatePackagingQty(ctx.currentRecord); }
+
+  <span class="k">function</span> fieldChanged(ctx) {
+    <span class="k">const</span> cfg = getConfig(ctx.currentRecord);
+    <span class="k">if</span> (cfg &amp;&amp; ctx.fieldId === cfg.packaging) updatePackagingQty(ctx.currentRecord);
+  }
+
+  <span class="k">return</span> { pageInit, fieldChanged };
+});</pre></div>
+</div></section>
+
+<section class="band" id="skills"><div class="wrap">
+  <div class="sec-head"><h2>Skills</h2><p>What the projects above actually used</p></div>
+  <div class="skills" id="skl"></div>
+</div></section>
+
+<section class="band" id="experience" style="padding-top:0"><div class="wrap">
+  <h2>Experience and education</h2>
+  <div class="tl">
+    <div class="job"><div class="when">2025 – now</div><div><h3>Business Systems Developer</h3><div class="org">Diversified Ingredients</div><p>SuiteScript development and NetSuite administration across five subsidiaries. Helped migrate the company's Microsoft Access data to Oracle NetSuite, then built the integrations, automations, validations, templates and reports in the case studies above.</p></div></div>
+    <div class="job"><div class="when">2022 – now</div><div><h3>Premium Home Theater Consultant</h3><div class="org">Best Buy</div><p>Consults with customers on integrated home theater systems: TVs, receivers, audio and home networking. Troubleshoots compatibility and connectivity across routers, wireless speakers, receivers and connected devices, and trains fellow advisors on premium products and solution recommendations.</p></div></div>
+    <div class="job"><div class="when">2016 – 2022</div><div><h3>Technical Intern</h3><div class="org">CMIT Solutions of Chesterfield</div><p>Helped build database user interfaces, websites and web pages with SQL, PHP, HTML and C++, and supported internal technical projects as needed.</p></div></div>
+    <div class="job"><div class="when">Dec 2022</div><div><h3>B.S. Computer Science</h3><div class="org">Lindenwood University, St. Charles, MO</div></div></div>
+    <div class="job"><div class="when">Ongoing</div><div><h3>Independent game development</h3><div class="org">Personal projects</div><p>Collaborative video game projects, programmed outside of work.</p></div></div>
+  </div>
+</div></section>
+
+<section class="band contact" id="contact"><div class="wrap">
+  <h2>Let's talk about your systems</h2>
+  <p>I'm looking for full-time work as a NetSuite developer, ERP or business systems developer, or software developer. Remote, or on-site around St. Louis. Available from December 2026; no sponsorship needed.</p>
+  <div class="row" style="align-items:center"><a class="resume" href="https://drive.google.com/uc?export=download&amp;id=1VklDDTNUodPJlX-tRsZrwWXOcL7I9rg7" aria-label="Download Nicholas Wood resume, PDF"><svg class="doc" viewBox="0 0 32 40" aria-hidden="true"><path d="M3 1h18l8 8v28a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2z" fill="#fff" stroke="currentColor" stroke-width="2"/><path d="M21 1v8h8" fill="none" stroke="currentColor" stroke-width="2"/><rect x="5" y="25" width="17" height="9" rx="1.5" fill="currentColor"/><text x="13.5" y="32.2" text-anchor="middle" font-size="7" font-weight="700" fill="#fff" font-family="Inter,sans-serif">PDF</text><path d="M6 13h12M6 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="rt"><b>Download resume</b><span>PDF · one page</span></span><svg class="dl" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-5-5m5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn ghost" href="mailto:nicholaswood@hotmail.com">Email me</a><a class="btn ghost" href="https://www.linkedin.com/in/nicholas-wood-966852156">LinkedIn</a></div>
+  <p class="alt">Prefer to preview it first? <a href="https://drive.google.com/file/d/1VklDDTNUodPJlX-tRsZrwWXOcL7I9rg7/view">Open the resume in Google Drive</a>.</p>
+  <p style="font-size:15px">nicholaswood@hotmail.com · linkedin.com/in/nicholas-wood-966852156</p>
+</div></section>
+<footer><div class="wrap"><span>Nicholas Wood · St. Charles, MO</span><span>Project details are described without client data, internal IDs or company source code.</span></div></footer>
+
+<script>
+{
+const cases=[
+ {pn:'Migration',t:'Microsoft Access to Oracle NetSuite',st:'prod',p:'The company ran on a legacy Access database and had a fixed go-live for NetSuite.',b:'One of two people on the migration: converted and exported legacy records, mapped old relationships onto NetSuite\'s structure and prepared the data for import.',r:'Deadline met; NetSuite became the company\'s single system of record.',c:['Microsoft Access','Data conversion','Data exports','Data mapping']},
+ {pn:'Accounting',t:'Multi-subsidiary payment automation',st:'prod',p:'Users picked the deposit bank account on customer payments by hand, risking postings to the wrong account.',b:'A Client Script that reads the payment\'s subsidiary and sets the correct bank account, with separate Sandbox and Production mappings.',r:'Confirmed working in all five subsidiaries.',c:['Client Script','Multi-subsidiary','Field defaulting']},
+ {pn:'Data integrity',t:'Validation and duplicate prevention',st:'prod',p:'Duplicate non-conformance records, accounting requests with empty explanations, and packaging quantities on bulk loads.',b:'A beforeSubmit User Event that blocks a second non-conformance per Phase; conditional required fields that reject "N/A"; a shared bulk-packaging rule enforced on three record types in browser and on save.',r:'Duplicate blocking confirmed working; one rule set now covers sales, purchasing and logistics records.',c:['User Event','Client Script','beforeSubmit','saveRecord','SuiteFlow']},
+ {pn:'Finance',t:'Revenue and cost reconciliation',st:'test',p:'Supplemental invoice revenue and additional costs had to be kept current on operational Phase records for reporting.',b:'Scheduled Scripts driven by summary saved searches that write revenue and two separate cost totals to each Phase, and a Map/Reduce job to correct additional sales charges across the historical dataset.',r:'A logged test run processed 7 results and updated 6 records as expected.',c:['Scheduled','Map/Reduce','Summary searches','Bulk updates']},
+ {pn:'Documents',t:'File Cabinet document migration',st:'test',p:'Large backlogs of carrier agreements, policy files and quality documents sat in folders, not on the records they belonged to.',b:'Scheduled and Map/Reduce jobs that match files to vendors, customers, partners and non-conformance records by saved-search mapping or by IDs parsed from filenames with regex; agreements go to a dedicated field, the rest attach to the record. Custom log records keep an audit trail.',r:'Found and fixed a silent 1,000-result search cap that was skipping newer files.',c:['N/file','record.attach','Regex','Map/Reduce','Audit logging']},
+ {pn:'Documents',t:'Dynamic contract PDFs',st:'dev',p:'Purchase Contracts needed a printed list of PO references, one per truckload.',b:'Extended a Suitelet-driven Advanced PDF/HTML template with FreeMarker that generates zero-padded sequential references in an eight-column grid and handles contracts with no loads.',r:'Traced the rendering failures to malformed table XML and fixed the markup.',c:['Suitelet','FreeMarker','Advanced PDF/HTML','XML']},
+ {pn:'Reporting',t:'Purchasing and logistics insight',st:'dev',p:'Buyers couldn\'t see how much of a contract\'s tonnage had shipped, or how long invoices trailed shipments.',b:'Saved-search formulas that sum Phase weights against contract tonnage with a weight-based HTML progress bar; exception searches for unbilled POs and standalone vendor bills; a SuiteAnalytics workbook comparing invoice and ship dates by trader and commodity.',r:'Weight-based progress replaces the old load-count view.',c:['Formula HTML','Saved searches','SuiteAnalytics','Joins']},
+ {pn:'Usability',t:'Cross-record automation',st:'dev',p:'Staff retyped customer and invoice numbers when opening tasks from a Phase, and couldn\'t see a carrier\'s loads from the vendor.',b:'A beforeLoad User Event that fills customer and invoice on new Tasks from the linked Phase, using the invoice\'s display text, not its ID; a custom vendor subtab listing the carrier\'s assigned Phases.',r:'Built natively first, with code only where configuration couldn\'t reach.',c:['beforeLoad','Custom subtabs','Sublists','N/record']},
+ {pn:'Maintenance',t:'Safe bulk data cleanup',st:'test',p:'Leftover Purchase Orders, Item Receipts and Contacts needed removing without hand-deleting each one.',b:'Saved-search-driven Scheduled Scripts with hard caps per run, paginated collection so deletions don\'t shift the result set, and receipts deleted before their parent POs.',r:'Destructive jobs run in limited, logged batches.',c:['record.delete','Pagination','Governance','Dependencies']},
+ {pn:'Security',t:'File access hardening',st:'dev',p:'Trucking policy documents were reachable without logging in.',b:'A Scheduled Script that switches off "Available Without Login" across target folders, then a saved-search filter so reruns touch only files still open.',r:'Reworked after the first version hit governance limits.',c:['N/file','Scheduled','Governance tuning']}
+];
+const stl={prod:'In production',test:'Tested',dev:'Built'};
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+document.getElementById('cases').innerHTML=cases.map(c=>`<article class="case"><div class="top"><span class="pn">${esc(c.pn)}</span><span class="st ${c.st}">${stl[c.st]}</span></div><h3>${esc(c.t)}</h3><p><b>Problem.</b> ${esc(c.p)}</p><p><b>Built.</b> ${esc(c.b)}</p><p><b>Outcome.</b> ${esc(c.r)}</p><div class="chips">${c.c.map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div></article>`).join('');
+
+const skills=[
+ ['Languages',['JavaScript','SuiteScript 2.x','SQL','C++','Java','C#','Python','PHP','HTML']],
+ ['NetSuite development',['SuiteScript 2.x / 2.1','Client Scripts','User Event Scripts','Scheduled Scripts','Map/Reduce','Suitelets','SuiteFlow workflows','Script deployments']],
+ ['NetSuite platform',['Saved searches & formulas','SuiteAnalytics Workbook','Advanced PDF/HTML','Custom records & fields','Custom forms, subtabs, sublists','File Cabinet','Sandbox → Production']],
+ ['SuiteScript modules',['N/record','N/search','N/https','N/file','N/runtime','N/format','N/currentRecord','N/ui/serverWidget']],
+ ['Engineering',['JavaScript ES6+','REST & JSON','Reusable libraries','Config-driven design','Error handling','Caching & de-duplication','Governance management','Regex']],
+ ['Data',['SQL','Microsoft Access migration','Data mapping & cleansing','Relational modelling','Staging tables','Reconciliation','Bulk maintenance']],
+ ['Business areas',['AR & AP','Purchasing & contracts','Sales contracts','Logistics & freight','Carrier compliance','Quality management','Multi-subsidiary accounting']],
+ ['People & support',['Business-user troubleshooting','Requirements gathering','Training colleagues','Customer consulting','Networking & connectivity']]
+];
+document.getElementById('skl').innerHTML=skills.map(([h,l])=>`<div class="panel"><h3>${esc(h)}</h3><div class="chips">${l.map(x=>`<span class="chip" style="background:var(--card)">${esc(x)}</span>`).join('')}</div></div>`).join('');
+
+const cp=document.getElementById('copy');
+cp.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(document.getElementById('src').innerText);cp.textContent='Copied'}catch(e){cp.textContent='Select and copy'}setTimeout(()=>cp.textContent='Copy',1800)});
+
+const s=document.getElementById('svg');
+const nodes={
+ sch:['Scheduled Script','batch re-checks from saved searches'],
+ ue:['User Event','afterSubmit on vendor save'],
+ lib:['Shared compliance library','rules, normalising, logging'],
+ api:['FMCSA carrier API','USDOT / MC lookup, JSON'],
+ ins:['Insurance & paperwork rules','coverage, expiry, agreements'],
+ ven:['Vendor record','status, reasons, fleet size, date'],
+ rep:['Saved-search reports','who is out of compliance']
+};
+const draw=()=>{
+ const W=s.clientWidth,H=s.clientHeight;if(!W||!H)return;
+ const narrow=W<560;
+ let pos;
+ if(!narrow){
+  const c=[W*.17,W*.5,W*.83],r=[H*.15,H*.5,H*.85];
+  pos={sch:[c[0],r[0]+H*.08],ue:[c[0],r[2]-H*.08],lib:[c[1],r[1]],api:[c[2],r[0]],ins:[c[2],r[1]],ven:[c[1],r[2]],rep:[c[2],r[2]]};
+ }else{
+  const x1=W*.27,x2=W*.73,cx=W/2;
+  pos={sch:[x1,H*.09],ue:[x2,H*.09],lib:[cx,H*.33],api:[x1,H*.56],ins:[x2,H*.56],ven:[cx,H*.76],rep:[cx,H*.93]};
+ }
+ const bw=Math.min(narrow?W*.44:W*.3,230),bh=58;
+ const edges=[['sch','lib'],['ue','lib'],['lib','api'],['lib','ins'],['lib','ven'],['ven','rep']];
+ const edgePt=(a,b)=>{const[x1,y1]=pos[a],[x2,y2]=pos[b];const dx=x2-x1,dy=y2-y1;const t=Math.min((bw/2+6)/Math.abs(dx||1e-6),(bh/2+6)/Math.abs(dy||1e-6));return[x1+dx*t,y1+dy*t]};
+ let o=`<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--cob2)"/></marker></defs>`;
+ const paths=[];
+ edges.forEach(([a,b],i)=>{const p1=edgePt(a,b),p2=edgePt(b,a);const d=`M${p1[0]} ${p1[1]}L${p2[0]} ${p2[1]}`;paths.push(d);o+=`<path id="e${i}" d="${d}" stroke="var(--cob2)" stroke-width="2" fill="none" marker-end="url(#ar)"/>`});
+ Object.entries(nodes).forEach(([k,[t,sub]])=>{const[x,y]=pos[k];const hub=k==='lib';
+  o+=`<rect x="${x-bw/2}" y="${y-bh/2}" width="${bw}" height="${bh}" rx="8" fill="${hub?'var(--cob)':'var(--card)'}" stroke="var(--cob2)" stroke-width="${hub?0:1.5}"/>`;
+  o+=`<text x="${x}" y="${y-5}" text-anchor="middle" style="${hub?'fill:#fff;stroke:var(--cob)':''};font-weight:600">${t}</text>`;
+  if(bw>170)o+=`<text class="sub" x="${x}" y="${y+15}" text-anchor="middle" style="${hub?'fill:#dfe6ff;stroke:var(--cob)':''}">${sub}</text>`;
+ });
+ o+=`<circle class="tok" r="5" fill="var(--cob2)"><animateMotion dur="3s" repeatCount="indefinite" path="${paths[2]}"/></circle>`;
+ o+=`<circle class="tok" r="5" fill="var(--cob2)"><animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" path="${paths[4]}"/></circle>`;
+ s.innerHTML=o;
+};
+const ro=new ResizeObserver(draw);ro.observe(s);
+}
+</script>
+</body>
+</html>
